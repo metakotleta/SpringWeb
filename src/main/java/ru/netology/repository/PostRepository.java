@@ -1,9 +1,6 @@
 package ru.netology.repository;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import ru.netology.exception.NotFoundException;
 import ru.netology.model.Post;
 
@@ -28,7 +25,7 @@ public class PostRepository {
                 .filter(p -> !p.isBeenRemoved())
                 .findFirst();
     }
-@ResponseBody
+
     public Post save(Post post) throws NotFoundException {
         if (posts.containsKey(post.getId()) && !posts.get(post.getId()).isBeenRemoved()) {
             posts.put(post.getId(), post);
